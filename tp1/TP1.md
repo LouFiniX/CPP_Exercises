@@ -156,16 +156,33 @@ Pensez à prendre des notes pour les donner à vos camarades absents.
 2. Expliquez la différence entre phase de build (compilation) et phase de link (édition des liens).  
 Pourquoi peut-on dire que l'expression "compiler un programme" est un abus de langage ?
 
+````
+La phase de build est la partis ou l'on crée les fichiers objets
+La phase de link est le moment ou l'on garde seulement les symbole utilisé dans le programme
+````
 3. Que signifient les messages suivants ?  
 a. error: 'qqchose' was not declared in this scope  
 b. error: 'qqchose' is not a member of 'std'  
 Ces erreurs se produisent-elles pendant la phase de build ou de link ?  
 Que fait exactement l'instruction préprocesseur `#include` et pourquoi permet-elle généralement de résoudre ce type de problème ?
 
+````
+a: Cela signifie que le symbole 'qqchose' n'est pas déclaré.
+b: Cela signifie que nous ne pouvons pas faire 'std::qqchose' car ce n'est pas une méthode de la classe std
+Elles se produisent durant la phase de build.
+L'instruction include vas recopier l'intégralité du fichier include dans le fichier ou l'instruction est écrite. 
+````
+
 4. Compilez le programme de l'exercice en ne linkant que le fichier-objet associé à `main.cpp` (c'est-à-dire en oubliant `utils.cpp`).  
 Quelle est l'erreur qui s'affiche ?    
 En quoi est-elle différente des erreurs de la question précédente ?  
 Expliquez ce qu'elle signifie exactement.
+
+````
+'undefined reference to `print_hello()'
+Elle est différentes car elle intervient pendant la phase de link.
+Elle signifie que l'on a pas accès à la définition de la fonction 'print_hello'/
+````
 
 5. Décommentez maintentant les instructions commentée des fichiers [main.cpp](ex3/main.cpp) et [utils.hpp](ex3/utils.hpp).  
 Compilez maintenant le programme complet (avec les modules main et utils).  
@@ -173,8 +190,19 @@ Quelle est l'erreur qui s'affiche ? S'agit-il d'une erreur de build ou de link ?
 Pourquoi se produit-elle ?  
 Que faudrait-il faire pour la résoudre ?
 
+````
+'multiple definition of `print_bye()'
+Il s'agit d'une erreur de link.
+ELle se produit car la fonction 'print_bye' est définie dans le utils.hpp qui est inclu dans le main.cpp et dans le utils.cpp. Donc on a bien 2 définition de 'print_bye'
+Il faudrait déplacer la déplacer la définition dans le fichier .cpp.
+````
+
 6. Ajoutez le mot-clef `inline` devant la définition de la fonction `print_bye` dans [utils.hpp](ex3/utils.hpp). Que constatez-vous quand vous réessayez de compiler le programme ?  
 Selon-vous, quel est l'effet du mot-clef `inline` sur le linker ?
+
+````
+Le programme compile car inline permet d'autoriser d'avoir plusieurs fois la déclaration d'un symbole présente dans plusieurs fichier.
+````
 
 ## Pour terminer
 
