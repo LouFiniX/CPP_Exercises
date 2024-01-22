@@ -3,10 +3,8 @@
 
 int main(int argc, char const *argv[])
 {
-    Person p;
-    p.first_name = "Palluche";
-    p.surname = "La Falluche";
+    Person p {"Palluche", "La Falluche"};
     
-    std::cout << "La personne s'appelle " << p.first_name << " " << p.surname << std::endl;
+    std::cout << "La personne s'appelle " << p.get_first_name() << " " << p.get_surname() << std::endl;
     return 0;
 }
