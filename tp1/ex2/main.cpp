@@ -26,7 +26,7 @@ int main(int argc, char const *argv[])
     std::stringstream builder;
     builder << "Les personne sont";
     for (auto p:P){
-        builder << " " << p.get_first_name() << " " << p.get_surname();
+        builder << " " << p.get_first_name() << " " << p.get_surname() << ", ";
     }
     std::cout << builder.str() << std::endl;
 
