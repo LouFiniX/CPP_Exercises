@@ -2,6 +2,8 @@
 #include "Card.hpp"
 #include "Player.hpp"
 
+#define NB_TOUR 16
+
 int main(int argc, char const *argv[]){
     const Card c1 { 8, "Pique" };
     std::cout << c1;
@@ -26,5 +28,11 @@ int main(int argc, char const *argv[]){
         p2[i].print();
         std::cout << std::endl;
     }
+
+    while(!Player::play(p1, p2)){
+    }
+    std::cout << "Score de p1 " << p1.get_score() << std::endl;
+    std::cout << "Score de p2 " << p2.get_score() << std::endl;
+
     return 0;
 }
