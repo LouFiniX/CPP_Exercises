@@ -10,3 +10,7 @@ Card::Card(unsigned int value, std::string color)
 void Card::print() const{
     std::cout << _value << " de " << _color << std::endl;
 }
+
+bool Card::operator==(Card other) const{
+    return _value == other._value;
+}
