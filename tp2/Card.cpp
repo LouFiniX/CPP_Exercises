@@ -14,3 +14,8 @@ void Card::print() const{
 bool Card::operator==(Card other) const{
     return _value == other._value;
 }
+
+bool Card::operator<(Card other) const{
+    return _value < other._value;
+}
+
