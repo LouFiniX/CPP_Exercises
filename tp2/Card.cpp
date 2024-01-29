@@ -8,7 +8,6 @@ Card::Card(unsigned int value, std::string color)
     {}
 
 void Card::print() const{
-    std::string carte;
     switch (_value){
     case 11:
         std::cout << "Valet" << " de " << _color << std::endl;
@@ -37,3 +36,23 @@ bool Card::operator<(Card other) const{
     return _value < other._value;
 }
 
+std::ostream& operator<<(std::ostream& stream, Card card){
+    switch (card._value){
+    case 11:
+        stream << "Valet" << " de " << card._color << std::endl;
+        break;
+    case 12:
+        stream << "Dame" << " de " << card._color << std::endl;
+        break;
+    case 13:
+        stream << "Roi" << " de " << card._color << std::endl;
+        break;
+    case 14:
+        stream << "As" << " de " << card._color << std::endl;
+        break;
+    default:
+        stream << card._value << " de " << card._color << std::endl;
+        break;
+    }
+    return stream;
+}
