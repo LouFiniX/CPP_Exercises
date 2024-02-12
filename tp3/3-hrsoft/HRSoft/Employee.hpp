@@ -1,7 +1,7 @@
 #pragma once
 
 #include <list>
-#include <ostream>
+#include <iostream>
 #include <string>
 
 class Employee
@@ -13,11 +13,24 @@ public:
 
     void add_subordinate(Employee& subordinate)
     {
-        // TODO - Q3
-        // ...
+        _subordinates.emplace_back(&subordinate);
+    }
+
+    void print_subordinates(){
+        for (auto e:_subordinates){
+            std::cout << *e << std::endl;
+        }
     }
 
     friend std::ostream& operator<<(std::ostream&, const Employee&);
+
+    void remove_subodinate(Employee& employee){
+        _subordinates.remove(&employee);
+    }
+
+    int operator==(Employee other){
+        return other._name == _name && other._salary == _salary;
+    }
 
 private:
     std::string _name;

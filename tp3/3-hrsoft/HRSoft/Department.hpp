@@ -4,6 +4,7 @@
 
 #include <list>
 #include <string>
+#include <iostream>
 
 class Department
 {
@@ -22,6 +23,23 @@ public:
         }
 
         return employee;
+    }
+
+    void print_employees(){
+        for (auto employee:_employees){
+            std::cout << employee << std::endl;
+        }
+    }
+
+    void print_dep(){
+        std::cout << _name << std::endl;
+    }
+
+    void remove_subodinate_for_all_employee(Employee& e){
+        for (auto& employee:_employees){
+            employee.remove_subodinate(e);
+        }
+        _employees.remove(e);
     }
 
 private:
