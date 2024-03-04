@@ -15,42 +15,48 @@
 
 a. `i` est un `int`  
 ```cpp
-4
-4 + i
-i
-i = 4
-i == 4
+4 //r_value
+4 + i //r_value
+i //l_value
+i = 4 //r_value
+i == 4 //r_value
 ```
 
 b. `vec` est un `std::vector<char>`
 ```cpp
-vec[5]
-vec
-vec.pop_back()
-std::vector { 'a', 'b', 'c' }
-vec.push_back('d')
-std::move(vec)
+vec[5] //r_value
+vec //l_value
+vec.pop_back() //r_value
+std::vector { 'a', 'b', 'c' } //r_value
+vec.push_back('d') //r_value
+std::move(vec) //r_value
 ```
 
 c. `ptr` est un pointeur de `int`
 ```cpp
-ptr + 3
-*(ptr + 3)
-*ptr + 3
+ptr + 3 //r_value
+*(ptr + 3) //l_value
+*ptr + 3 //r_value
 ```
 
 d. `str` est une `std::string`
 ```cpp
-std::string { "aaaa" }
-str
-str + "aaaa"
-str += "aaaa"
-"aaaa"
+std::string { "aaaa" } //r_value
+str //l_value
+str + "aaaa" //l_value
+str += "aaaa" //r_value
+"aaaa" //r_value
 ```
 
 2. Supposons que vous ayiez l'instruction : `Class inst { expr }`.  
-Quelles sont les deux conditions pour que le constructeur de copie soit appelé ?  
+Quelles sont les deux conditions pour que le constructeur de copie soit appelé ?   
+<p style="color:green"> Le constructeur de copie est le constructeur appelé lorsqu’un objet est instancié et initialisé à partir d’un objet du même type.
+
+
 Même question pour le constructeur de déplacement ?
+
+<p style="color:green"> Lorsqu’on déplace un objet pour en instancier un autre du même type, c’est le constructeur de déplacement qui est appelé.
+
 
 ## Exercice 2 - CopyablePtr (90 min)
 
