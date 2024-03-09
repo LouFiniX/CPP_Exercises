@@ -24,7 +24,7 @@ i == 4 //r_value
 
 b. `vec` est un `std::vector<char>`
 ```cpp
-vec[5] //r_value
+vec[5] //l_value
 vec //l_value
 vec.pop_back() //r_value
 std::vector { 'a', 'b', 'c' } //r_value

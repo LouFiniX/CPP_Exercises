@@ -5,6 +5,7 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
 // Contient le résultat de la production d'une recette.
 struct ProductionResult
@@ -37,4 +38,10 @@ public:
 
 private:
     // Placez vos données ici...
+    std::vector<std::unique_ptr<Material>> _materials;
+    std::vector<std::unique_ptr<Recipe>> _recipes;
+
+    bool is_doable_recipes(const Recipe& recipe) const;
+    void missing_material_for_recipe(const Recipe& recipe, std::vector<std::string>& missing_material) const;
+
 };
