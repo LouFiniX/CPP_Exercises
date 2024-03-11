@@ -83,6 +83,9 @@
         "stop_token": "cpp",
         "thread": "cpp",
         "variant": "cpp",
-        "shared_mutex": "cpp"
+        "forward_list": "cpp",
+        "locale": "cpp",
+        "xlocbuf": "cpp",
+        "xlocmes": "cpp"
     }
 }
