@@ -65,23 +65,23 @@ int main()
     Herbivore& bird_as_herb = bird;
     Carnivore& bird_as_carn = bird;
 
-    tiger.move();                  // I1 -> Dynamique Tiger / Statique Tiger, Tiger::move 
-    tiger_as_animal.move();        // I2 -> Dynamique Tiger / Statique Animal, Tiger::move
+    tiger.move();                  // I1
+    tiger_as_animal.move();        // I2
 
-    bird.move();                   // I3 -> Dynamique Bird / Statique Bird, Bird::move
-    bird_as_animal.move();         // I4 -> Dynamique Animal / Statique Animal, Animal::move
+    bird.move();                   // I3
+    bird_as_animal.move();         // I4
 
-    bird.can_eat_plant();          // I5 -> Dynamique Bird / Statique Bird, Bird::can_eat_plant
-    bird_as_herb.can_eat_plant();  // I6 -> Dynamique Herbivore / Statique Herbivore, Herbivore::can_eat_plant
-    bird_as_carn.can_eat_plant();  // I7 -> Dynamique Carnivore / Statique Carnivore, Carnivore::can_eat_plant
+    bird.can_eat_plant();          // I5
+    bird_as_herb.can_eat_plant();  // I6
+    bird_as_carn.can_eat_plant();  // I7
 
-    tiger.can_eat_plant();         // I8 -> Dynamique Carnivore / Statique Tiger, Carnivore::can_eat_plant
-    tiger.can_eat_meat();          // I9 -> Dynamique Tiger / Statique Tiger, Tiger::can_eat_meat
-    tiger_as_carn.can_eat_meat();  // I10 -> Dynamique Carnivore / Statique Carnivore, Carnivore::can_eat_plant
+    tiger.can_eat_plant();         // I8
+    tiger.can_eat_meat();          // I9
+    tiger_as_carn.can_eat_meat();  // I10
 
-    bird.type();                   // I11 -> Dynamique Bird / Statique Bird, Bird::type
-    bird_as_animal.type();         // I12 -> Dynamique Animal / Statique Animal, Animal::type
-    tiger_as_animal.type();        // I13 -> Dynamique Animal / Statique Animal, Animal::type
+    bird.type();                   // I11
+    bird_as_animal.type();         // I12
+    tiger_as_animal.type();        // I13
 
     return 0;
 }
@@ -111,11 +111,8 @@ cmake --build <chemin_vers_le_dossier_build> --target tp6-ex1
 
 2. Prenez connaissance du contenu des fichiers pré-existants et répondez aux questions suivantes :
 - Dans [Dungeon.cpp](dungeon/Dungeon.cpp), quel est le rôle de la fonction `display` ?
-Elle sert à affiché la zone du dongeon.
 - Dans [Dungeon.cpp](dungeon/Dungeon.cpp), quel est le rôle de la fonction `update` ?
-Elle sert à mettre à lour les entités ainsi que le dongeons.
 - Quelle variable du `main` porte l'ownership des entitées ?
-C'est `all_entities`
 
 ### B. Personnage
 

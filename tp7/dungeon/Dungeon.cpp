@@ -1,8 +1,5 @@
 #include "Entity.hpp"
 #include "Logger.hpp"
-#include "Character.hpp"
-#include "Trap.hpp"
-#include "Potion.hpp"
 
 #include <array>
 #include <chrono>
@@ -16,7 +13,7 @@
 #include <vector>
 
 using Cell = std::vector<Entity*>;
-using Grid = std::array<std::array<Cell, 10>, 10>;
+using Grid = std::array<std::array<Cell, 50>, 10>;
 
 void fill_grid(Grid& grid, const std::vector<std::unique_ptr<Entity>>& entities)
 {
@@ -99,8 +96,8 @@ void trigger_interactions(const std::vector<Entity*>& entities)
 {
     if (entities.size() > 1)
     {
-        entities[0]->interact_with(*entities[1]);
-        entities[1]->interact_with(*entities[0]);
+        // entities[0]->interact_with(*entities[1]);
+        // entities[1]->interact_with(*entities[0]);
     }
 }
 
@@ -108,7 +105,8 @@ void remove_dead_entities(std::vector<std::unique_ptr<Entity>>& entities)
 {
     for (auto it = entities.begin(); it != entities.end();)
     {
-        if (it->get()->should_destroy())
+        const auto should_remove = false; // <- modifiez cette condition
+        if (should_remove)
         {
             it = entities.erase(it);
         }
@@ -143,11 +141,6 @@ void update(Grid& grid, std::vector<std::unique_ptr<Entity>>& entities)
     for (auto& entity : entities)
     {
         entity->update();
-
-//        do {
-//            entity->update();
-//        } while(entity->get_x() <= 0 || entity->get_x() >= grid.front().size() -1
-//        && entity->get_y() <= 0 || entity->get_y() >= grid.size() -1);
     }
 
     fill_grid(grid, entities);
@@ -175,29 +168,11 @@ int main()
     const auto height = grid.size();
 
     auto all_entities = std::vector<std::unique_ptr<Entity>> {};
-    all_entities.push_back(std::make_unique<Character>(3, 2));
-    all_entities.push_back(std::make_unique<Character>(7, 6));
-    all_entities.push_back(std::make_unique<Character>(40, 5));
-    all_entities.push_back(std::make_unique<Trap>(width, height));
-    all_entities.push_back(std::make_unique<Trap>(width, height));
-    all_entities.push_back(std::make_unique<Trap>(width, height));
-    all_entities.push_back(std::make_unique<Trap>(width, height));
-    all_entities.push_back(std::make_unique<Trap>(width, height));
-    all_entities.push_back(std::make_unique<Trap>(width, height));
-    all_entities.push_back(std::make_unique<Trap>(width, height));
-    all_entities.push_back(std::make_unique<Trap>(width, height));
-    all_entities.push_back(std::make_unique<Trap>(width, height));
-    all_entities.push_back(std::make_unique<Trap>(width, height));
-    all_entities.push_back(std::make_unique<Trap>(width, height));
-    all_entities.push_back(std::make_unique<Trap>(width, height));
-    all_entities.push_back(std::make_unique<Trap>(width, height));
-    all_entities.push_back(std::make_unique<Trap>(width, height));
-    all_entities.push_back(std::make_unique<Trap>(width, height));
-    all_entities.push_back(std::make_unique<Trap>(width, height));
-
-
-    all_entities.push_back(std::make_unique<Trap>(width, height));
-    all_entities.push_back(std::make_unique<Potion>(width, height));
+    all_entities.push_back(std::make_unique<Entity>(3, 2));
+    all_entities.push_back(std::make_unique<Entity>(7, 6));
+    // all_entities.push_back(std::make_unique<Character>());
+    // all_entities.push_back(std::make_unique<Trap>(width, height));
+    // all_entities.push_back(std::make_unique<Trap>(width, height));
 
     fill_grid(grid, all_entities);
 
